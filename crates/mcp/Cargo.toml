@@ -1,0 +1,17 @@
+[package]
+name = "novaword-mcp"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "NovaWord MCP server: every command as a tool, headless or bridged to the running app"
+
+[lints]
+workspace = true
+
+[dependencies]
+novaword-doc = { workspace = true }
+novaword-engine = { workspace = true }
+novaword-render = { workspace = true }
+novaword-control-key = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }

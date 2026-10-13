@@ -1,0 +1,22 @@
+[package]
+name = "novaword-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+description = "NovaWord command line: convert, inspect, render, run commands, MCP server"
+
+[[bin]]
+name = "novaword-cli"
+path = "src/main.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+novaword-doc = { workspace = true }
+novaword-engine = { workspace = true }
+novaword-render = { workspace = true }
+novaword-mcp = { workspace = true }
+novaword-zotero = { workspace = true }
+serde_json = { workspace = true }
