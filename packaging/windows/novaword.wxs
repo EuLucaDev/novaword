@@ -18,13 +18,13 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
   <Package
       Name="NovaWord"
-      Manufacturer="Learning Machines LLC"
+      Manufacturer="Nova Foods"
       Version="$(var.Version)"
-      UpgradeCode="075497F9-E861-45D0-9C7F-A74F8C34E6BA"
+      UpgradeCode="F4D1A437-2094-5244-B84B-FED62FB3A716"
       Scope="perMachine"
       Compressed="yes"
       Language="1033">
-    <SummaryInformation Description="NovaWord word processor" Manufacturer="Learning Machines LLC" />
+    <SummaryInformation Description="NovaWord word processor" Manufacturer="Nova Foods" />
     <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
          (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
     <MajorUpgrade AllowSameVersionUpgrades="yes"
@@ -66,7 +66,7 @@
 
   <Fragment>
     <ComponentGroup Id="NovawordFiles" Directory="INSTALLFOLDER">
-      <Component Id="NovawordApp" Guid="855DCEC6-9285-444F-9382-9654B83B34F6">
+      <Component Id="NovawordApp" Guid="A906B478-70C1-58C0-9B9B-3AFBCB56CA2D">
         <File Id="NovawordExe" Source="$(var.BinDir)\novaword.exe" KeyPath="yes">
           <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="NovaWord"
               Description="NovaWord word processor" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
@@ -83,7 +83,7 @@
            makes it the default (File › Options › General opens that page). Nothing here sets an
            extension's default: the installer never takes over .docx from another app. Markdown and
            plain text are only "Open with" candidates. Removed again on uninstall. -->
-      <Component Id="NovawordFileTypes" Guid="EFF89E6A-F9B8-49F9-B3AE-E243347484B4">
+      <Component Id="NovawordFileTypes" Guid="763A8D88-2A8C-55A1-BC64-E3E82AF43D09">
         <RegistryValue Root="HKLM" Key="Software\RegisteredApplications" Name="NovaWord" Value="Software\NovaWord\Capabilities" Type="string" KeyPath="yes" />
         <RegistryValue Root="HKLM" Key="Software\NovaWord\Capabilities" Name="ApplicationName" Value="NovaWord" Type="string" />
         <RegistryValue Root="HKLM" Key="Software\NovaWord\Capabilities" Name="ApplicationDescription" Value="Write and design documents; open and save Word files." Type="string" />
@@ -152,6 +152,9 @@
 
       <Component Id="NovawordCli">
         <File Id="NovawordCliExe" Source="$(var.BinDir)\novaword-cli.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="NovaFoodsLegalNotice">
+        <File Id="NovaFoodsLegalNoticeFile" Source="$(sys.SOURCEFILEDIR)..\..\NOTICE" KeyPath="yes" />
       </Component>
     </ComponentGroup>
   </Fragment>
