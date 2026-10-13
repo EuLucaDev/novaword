@@ -631,8 +631,8 @@ fn labels_ui(app: &mut WordApp, ui: &mut Ui, f: &mut LabelsForm) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_engine::Session;
+    use serde_json::json;
 
     use super::*;
     use crate::dialogs::Dialog;

@@ -1,11 +1,11 @@
 //! Mailings tab: mail merge (recipients from CSV/JSON or an Excel/OpenDocument spreadsheet,
 //! merge fields, preview, finish), envelopes and labels.
 
-use serde_json::{Value, json};
 use novaword_doc::para::InlineObject;
 use novaword_doc::props::{Align, CharProps};
 use novaword_doc::section::{SectionProps, SectionStart};
 use novaword_doc::{Block, Blocks, Document, Paragraph, Part, PartKind, Pos, StoryRef, Table, para_block};
+use serde_json::{Value, json};
 
 use super::{delete_selection, sel_result};
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};
@@ -271,8 +271,7 @@ fn recipients(s: &mut Session, v: &Value) -> CmdResult {
             } else {
                 return Err(CmdError::Params("`csv`, `path`, `data` or `rows` required".into()));
             };
-            let spreadsheet =
-                ext.as_deref().is_some_and(novaword_formats::sheet::is_extension) || novaword_formats::sheet::detect(&bytes).is_some();
+            let spreadsheet = ext.as_deref().is_some_and(novaword_formats::sheet::is_extension) || novaword_formats::sheet::detect(&bytes).is_some();
             if spreadsheet {
                 use novaword_formats::sheet::{Pick, read_rows, sheet_names};
                 let pick = match v.get("sheet") {

@@ -4,10 +4,10 @@
 
 use std::sync::Arc;
 
-use serde_json::{Value, json};
 use novaword_doc::props::{Border, BorderStyle, Borders, CharProps, ParaProps, Rgb, TextColor};
 use novaword_doc::styles::{Style, StyleKind, TableStyleParts, TableStyleProps};
 use novaword_doc::{Block, Table};
+use serde_json::{Value, json};
 
 use crate::{CmdError, CmdResult, CommandSpec, Session, p};
 

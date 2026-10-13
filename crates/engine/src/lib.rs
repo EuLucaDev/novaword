@@ -25,15 +25,15 @@ use serde_json::Value;
 
 pub use io::Password;
 pub use keymap::KeyMap;
-pub use ribbon::RibbonLayout;
-pub use session::{
-    CellRange, ColumnBlock, EditSnapshot, FindState, MathEdit, Prefs, Selection, Session, UNDO_LIST_MAX, ViewState, blank_document, set_system_locale,
-};
 pub use novaword_doc as doc;
 pub use novaword_geom::Region;
 pub use novaword_layout as layout;
 pub use novaword_proof as proof;
 pub use novaword_render as render;
+pub use ribbon::RibbonLayout;
+pub use session::{
+    CellRange, ColumnBlock, EditSnapshot, FindState, MathEdit, Prefs, Selection, Session, UNDO_LIST_MAX, ViewState, blank_document, set_system_locale,
+};
 
 #[derive(Debug, thiserror::Error, Clone, PartialEq)]
 pub enum CmdError {

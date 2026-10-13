@@ -17,9 +17,9 @@
 
 use std::sync::OnceLock;
 
+use novaword_doc::props::Rgb;
 use vello_cpu::kurbo::{self, Affine, BezPath};
 use vello_cpu::{RenderContext, Resources};
-use novaword_doc::props::Rgb;
 
 use crate::Rendered;
 

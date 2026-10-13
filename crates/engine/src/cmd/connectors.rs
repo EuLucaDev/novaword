@@ -8,10 +8,10 @@
 
 use std::collections::HashMap;
 
-use serde_json::{Value, json};
 use novaword_doc::connector::{ConnEnd, Frame, ends, nearest_site, route, site_point};
 use novaword_doc::para::{Anchor, InlineObject, Wrap};
 use novaword_doc::{Pos, StoryRef};
+use serde_json::{Value, json};
 
 use crate::{CmdError, CmdResult, CommandSpec, Session, p};
 

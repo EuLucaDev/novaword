@@ -6,8 +6,8 @@
 use std::sync::Arc;
 
 use egui::{Rect, Sense, Stroke, TextureHandle, Ui, pos2, vec2};
-use serde_json::{Value, json};
 use novaword_layout::DocLayout;
+use serde_json::{Value, json};
 
 use crate::theme::{Tokens, medium, regular};
 use crate::{WordApp, icons};

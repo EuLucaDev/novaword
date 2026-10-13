@@ -4,9 +4,6 @@
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 
-use vello_cpu::kurbo::{self, Affine, BezPath, Shape};
-use vello_cpu::peniko;
-use vello_cpu::{Pixmap, RenderContext, Resources};
 use novaword_doc::Document;
 use novaword_doc::para::ShapeKind;
 use novaword_doc::props::Rgb;
@@ -15,6 +12,9 @@ use novaword_layout::Page;
 use novaword_layout::display::{DisplayOptions, Draw, Stroke, page_display};
 use novaword_layout::wordart::ArtPaint;
 use novaword_metafile::{Item, Picture, PlacedItem, Seg};
+use vello_cpu::kurbo::{self, Affine, BezPath, Shape};
+use vello_cpu::peniko;
+use vello_cpu::{Pixmap, RenderContext, Resources};
 
 pub mod icon_lib;
 

@@ -9,10 +9,10 @@
 //! after another in the order they were drawn, with a bar of controls at the bottom.
 
 use egui::{Align2, Color32, Key, Painter, Pos2, Rect, Stroke, Ui, pos2, vec2};
-use serde_json::json;
 use novaword_doc::freeform::{InkTool, MAX_POINTS};
 use novaword_engine::cmd::draw::DrawMode;
 use novaword_layout::DocLayout;
+use serde_json::json;
 
 use crate::WordApp;
 use crate::canvas::page_at;

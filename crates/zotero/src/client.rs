@@ -8,8 +8,8 @@
 use std::net::{SocketAddr, TcpStream};
 use std::time::Duration;
 
-use serde_json::Value;
 use novaword_engine::Session;
+use serde_json::Value;
 
 use crate::wire::{self, Call};
 use crate::{Bridge, Host, ZoteroError};

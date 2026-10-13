@@ -2,11 +2,11 @@
 //! GB/T 7714, GOST, SIST02), source manager, index, table of figures, cross-references, table
 //! of authorities, footnote options.
 
-use serde_json::{Value, json};
 use novaword_doc::collate::{SortKey, heading_letter, sort_key};
 use novaword_doc::para::InlineObject;
 use novaword_doc::props::{CharProps, TabAlign, TabLeader, TabStop};
 use novaword_doc::{Block, Document, Paragraph, Path, Pos, Source, StoryRef};
+use serde_json::{Value, json};
 
 use super::{delete_selection, sel_result};
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};

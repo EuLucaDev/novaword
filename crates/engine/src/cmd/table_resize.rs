@@ -6,12 +6,12 @@
 //! made the drawn columns differ from the stored grid. The app sends each finished drag here,
 //! so every drag is one undo step.
 
-use serde_json::Value;
 use novaword_doc::props::{Align, HeightRule, VMerge};
 use novaword_doc::table::MAX_COLS;
 use novaword_doc::{Cell, Document, Path, StoryRef, Table};
 use novaword_geom::Rect;
 use novaword_layout::{DocLayout, Placed};
+use serde_json::Value;
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Session, p};

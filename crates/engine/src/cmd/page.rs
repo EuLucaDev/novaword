@@ -1,10 +1,10 @@
 //! Layout tab: page setup (margins, orientation, size, columns), breaks, line numbers, hyphenation.
 
-use serde_json::{Value, json};
 use novaword_doc::section::{
     Columns, DocGrid, DocGridType, LineNumbering, MAX_CHAR_SPACE, MAX_GRID_PITCH, MIN_GRID_PITCH, SectionProps, SectionStart,
 };
 use novaword_doc::{Block, Pos, StoryRef};
+use serde_json::{Value, json};
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};

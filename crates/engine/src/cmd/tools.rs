@@ -1,11 +1,11 @@
 //! Tools and the long tail: Repeat, macros, AutoCorrect, Compare, accessibility checker,
 //! document inspector, restrict editing, versions, templates, Quick Parts, and more.
 
+use novaword_doc::para::InlineObject;
+use novaword_doc::props::{CharProps, NumRef};
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 use std::sync::Arc;
-use novaword_doc::para::InlineObject;
-use novaword_doc::props::{CharProps, NumRef};
 
 use novaword_doc::{Block, Document, Paragraph, Pos, RevisionKind, StoryRef, para_block};
 

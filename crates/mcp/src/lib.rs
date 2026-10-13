@@ -14,9 +14,9 @@ pub use server::Server;
 
 use std::sync::Arc;
 
-use serde_json::{Value, json};
 use novaword_engine::Session;
 use novaword_engine::file_access::{self, AutomationRoots};
+use serde_json::{Value, json};
 
 /// Methods that need the desktop app.
 pub const NEEDS_APP: &str = "needs the desktop app: start `novaword --control 7981` and run `novaword-cli mcp --connect 127.0.0.1:7981`";

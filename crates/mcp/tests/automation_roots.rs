@@ -7,9 +7,9 @@
 
 use std::path::{Path, PathBuf};
 
-use serde_json::{Value, json};
 use novaword_engine::file_access::AutomationRoots;
 use novaword_mcp::{Headless, Server};
+use serde_json::{Value, json};
 
 /// A 1x1 PNG, so `insert.picture` has something real to read.
 const PNG: &[u8] = &[

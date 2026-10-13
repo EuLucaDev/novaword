@@ -4,9 +4,9 @@
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicU64, Ordering};
 
-use serde_json::json;
 use novaword_doc::{Document, StoryRef};
 use novaword_engine::{Session, io};
+use serde_json::json;
 
 struct Scratch(PathBuf);
 impl Scratch {

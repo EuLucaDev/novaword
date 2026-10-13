@@ -1,10 +1,10 @@
 //! WordArt and connectors through the commands.
 
-use serde_json::json;
 use novaword_doc::connector::{ConnEnd, ShapeExtra, ends};
 use novaword_doc::para::{Anchor, Float, InlineObject, ShapeKind, Wrap};
 use novaword_doc::props::CharProps;
 use novaword_doc::{Document, Paragraph, Pos, StoryRef, para_block};
+use serde_json::json;
 
 use crate::Session;
 

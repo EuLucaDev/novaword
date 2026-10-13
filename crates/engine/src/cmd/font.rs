@@ -5,8 +5,8 @@
 //! embeds in PDFs like any other. Where it is kept between runs is [`FontDb::load_user_fonts`]'s
 //! folder (desktop); without one it lasts for the session (the web shell stores it itself).
 
-use serde_json::{Value, json};
 use novaword_fonts::{FontDb, UserFont};
+use serde_json::{Value, json};
 
 use crate::cmd::insert::base64_decode;
 use crate::{CmdError, CmdResult, CommandSpec, Session, p};

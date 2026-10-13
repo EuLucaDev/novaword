@@ -6,8 +6,8 @@
 //! finds nothing usable says what the clipboard holds instead of "empty". Everything read here
 //! comes from other programs: sizes are capped before it reaches the engine.
 
-use serde_json::Value;
 use novaword_engine::cmd::paste::{MAX_PASTE_BYTES, MAX_PICTURE_BYTES};
+use serde_json::Value;
 
 use crate::{WordApp, paste_picture};
 
@@ -116,8 +116,8 @@ mod tests {
     use super::*;
     use crate::Services;
     use crate::paste_picture::ClipboardPicture;
-    use serde_json::json;
     use novaword_engine::Session;
+    use serde_json::json;
 
     fn app(services: Services) -> WordApp {
         WordApp::new(Session::new(novaword_doc::Document::new()), services)

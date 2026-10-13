@@ -8,8 +8,8 @@
 //! text is at most [`MAX_SPEC_CHARS`] long, copies are clamped to [`MAX_COPIES`], and the
 //! resulting page list never exceeds [`MAX_PRINT_PAGES`].
 
-use serde_json::{Value, json};
 use novaword_layout::DocLayout;
+use serde_json::{Value, json};
 
 use crate::{CmdError, Session, p};
 

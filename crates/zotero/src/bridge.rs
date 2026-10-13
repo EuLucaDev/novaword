@@ -5,13 +5,13 @@
 //! Field ids handed to Zotero stay valid for the transaction: they are kept in a list parallel
 //! to the document-order list of Zotero fields, updated as fields are inserted and removed.
 
-use serde_json::{Value, json};
 use novaword_doc::edit::Fragment;
 use novaword_doc::para::OBJ;
 use novaword_doc::props::{LineSpacing, TabAlign, TabLeader, TabStop};
 use novaword_doc::styles::{Style, StyleKind};
 use novaword_doc::{CharProps, InlineObject, ParaProps, PartKind, Pos, StoryRef};
 use novaword_engine::{Selection, Session};
+use serde_json::{Value, json};
 
 use crate::fields::{self, ZField};
 use crate::rich;

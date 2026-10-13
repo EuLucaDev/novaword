@@ -3,9 +3,9 @@
 //! The player lives in [`crate::speech`]; these commands drive it, so the player window, the
 //! ribbon, the CLI and agents all control reading the same way.
 
-use serde_json::Value;
 use novaword_doc::para::OBJ;
 use novaword_doc::{InlineObject, Pos};
+use serde_json::Value;
 
 use super::sel_result;
 use crate::speech::{self, State};
@@ -156,9 +156,9 @@ fn past_citation(s: &mut Session, _: &Value) -> CmdResult {
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_doc::props::CharProps;
     use novaword_doc::{Document, InlineObject, Path, Pos, StoryRef};
+    use serde_json::json;
 
     use crate::Session;
     use crate::speech::State;

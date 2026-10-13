@@ -12,8 +12,8 @@ use std::sync::Arc;
 use std::sync::mpsc::{Receiver, Sender, channel};
 use std::time::{Duration, Instant};
 
-use serde_json::{Value, json};
 use novaword_ui_egui::ControlRequest;
+use serde_json::{Value, json};
 
 /// Longer request lines are refused (and the connection closed).
 const MAX_LINE: usize = 1 << 20;

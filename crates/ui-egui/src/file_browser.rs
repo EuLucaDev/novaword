@@ -470,9 +470,9 @@ fn icon_button(ui: &mut Ui, t: &Tokens, icon: &str, tip: &str, enabled: bool) ->
 mod tests {
     use super::*;
     use crate::Services;
+    use novaword_engine::Session;
     use serde_json::json;
     use std::sync::mpsc::channel;
-    use novaword_engine::Session;
 
     fn scratch(name: &str) -> PathBuf {
         let dir = std::env::temp_dir().join(format!("novaword-ui-browser-{name}-{}", std::process::id()));

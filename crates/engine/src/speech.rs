@@ -13,9 +13,9 @@
 
 use std::sync::{Arc, Condvar, Mutex, MutexGuard, PoisonError};
 
-use serde_json::{Value, json};
 use novaword_doc::para::{COLUMN_BREAK, LINE_BREAK, OBJ, PAGE_BREAK};
 use novaword_doc::{Document, InlineObject, Pos};
+use serde_json::{Value, json};
 
 /// Longest sentence handed to the speech program (longer ones are split at a space).
 const MAX_SENTENCE: usize = 600;

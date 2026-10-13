@@ -11,8 +11,8 @@
 //! colour needs nothing new below the UI.
 
 use egui::{Color32, Id, Pos2, Rect, Sense, Stroke, Ui, pos2, vec2};
-use serde_json::{Value, json};
 use novaword_doc::Rgb;
+use serde_json::{Value, json};
 
 use crate::WordApp;
 use crate::theme::{Tokens, c32};

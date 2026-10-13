@@ -3,12 +3,12 @@
 
 use std::collections::BTreeMap;
 
-use serde_json::{Value, json};
 use novaword_doc::collate::{SortKey, heading_letter, sort_key};
 use novaword_doc::para::InlineObject;
 use novaword_doc::props::{CharProps, TabAlign, TabLeader, TabStop};
 use novaword_doc::section::SectionStart;
 use novaword_doc::{Block, Paragraph, Path, Pos, StoryRef};
+use serde_json::{Value, json};
 
 use super::references::{FieldCode, leader};
 use super::sel_result;

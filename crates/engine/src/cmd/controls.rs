@@ -6,12 +6,12 @@
 //! (`sdtLocked`) or edited (`contentLocked`). Those rules live here and are called from the
 //! typing and deleting commands.
 
-use serde_json::{Value, json};
 use novaword_doc::control::{ContentControl, ControlKind, ControlLock, ControlRange, ListItem, MAX_CONTROL_TEXT, MAX_LIST_ITEMS};
 use novaword_doc::para::OBJ;
 use novaword_doc::props::{CharProps, Rgb, TextColor};
 use novaword_doc::styles::{Style, StyleKind};
 use novaword_doc::{InlineObject, Pos, StoryRef};
+use serde_json::{Value, json};
 
 use super::{delete_selection, sel_result};
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};
@@ -712,9 +712,9 @@ mod tests {
 
 #[cfg(test)]
 mod editing_tests {
-    use serde_json::json;
     use novaword_doc::StoryRef;
     use novaword_doc::control::ControlKind;
+    use serde_json::json;
 
     use crate::Session;
 

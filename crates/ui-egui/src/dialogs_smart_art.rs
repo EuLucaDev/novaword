@@ -5,10 +5,10 @@
 //! the pane through [`crate::panes`].
 
 use egui::{Color32, Painter, Rect, Sense, Stroke, Ui, pos2, vec2};
-use serde::Serialize;
-use serde_json::{Value, json};
 use novaword_doc::props::Rgb;
 use novaword_doc::smart_art::{MAX_ITEMS, SmartArtColors, SmartArtLayout, SmartArtSpec};
+use serde::Serialize;
+use serde_json::{Value, json};
 
 use crate::WordApp;
 use crate::theme::{Tokens, c32, regular, semibold};

@@ -8,11 +8,11 @@
 
 use std::sync::Arc;
 
-use serde_json::{Value, json};
 use novaword_doc::chart::{ChartSeries, ChartSpec, ChartType, LegendPos, MAX_POINTS, MAX_SERIES};
 use novaword_doc::graphic::{Graphic, GraphicKind};
 use novaword_doc::para::{Float, InlineObject};
 use novaword_doc::props::Rgb;
+use serde_json::{Value, json};
 
 use super::objects::selected;
 use super::{delete_selection, sel_result};

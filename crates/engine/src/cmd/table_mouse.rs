@@ -7,12 +7,12 @@
 //! column left of it to its contents. The app sends each click or finished drag here in page
 //! points, so each is one command (one undo step when it changes the document).
 
-use serde_json::Value;
 use novaword_doc::para::Anchor;
 use novaword_doc::props::TableFloat;
 use novaword_doc::{Document, Path, Pos, StoryRef, Table};
 use novaword_geom::Rect;
 use novaword_layout::{DocLayout, Placed};
+use serde_json::Value;
 
 use super::table_resize::{self, CellBox, Edge, REACH, ResizeTarget};
 use super::{sel_result, table};
@@ -432,8 +432,8 @@ fn fit_column(s: &mut Session, v: &Value) -> CmdResult {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use serde_json::json;
     use novaword_doc::props::Align;
+    use serde_json::json;
 
     fn table_session(rows: usize, cols: usize) -> Session {
         let mut s = Session::new(Document::new());

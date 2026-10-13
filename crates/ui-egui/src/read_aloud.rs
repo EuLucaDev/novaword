@@ -6,8 +6,8 @@
 //! reading stopped) and the sentence is highlighted on the page.
 
 use egui::{Color32, Rect, Sense, Ui, vec2};
-use serde_json::json;
 use novaword_engine::speech::{MAX_RATE, MIN_RATE, State};
+use serde_json::json;
 
 use crate::WordApp;
 use crate::theme::Tokens;

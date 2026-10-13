@@ -1,14 +1,14 @@
 //! Native print onboarding preserves engine PDF generation and submits the selected settings.
-use serde_json::json;
-use std::{cell::RefCell, rc::Rc};
 use novaword_engine::Session;
 use novaword_ui_egui::printing::{Duplex, Feedback, Printer};
 use novaword_ui_egui::{Services, WordApp};
+use serde_json::json;
+use std::{cell::RefCell, rc::Rc};
 
 #[test]
 fn control_print_discovery_reports_metadata_without_host_side_effects() {
-    use std::cell::Cell;
     use novaword_ui_egui::control::{ControlRequest, Outcome, handle};
+    use std::cell::Cell;
     let discoveries = Rc::new(Cell::new(0));
     let submissions = Rc::new(Cell::new(0));
     let mut app = WordApp::new(Session::new(novaword_doc::Document::new()), Services::default());

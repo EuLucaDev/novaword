@@ -1,10 +1,10 @@
 //! Table Design and Table Layout tabs.
 
-use serde_json::{Value, json};
 use novaword_doc::collate::{SortKey, sort_key};
 use novaword_doc::locale_number::{format_number, parse_number};
 use novaword_doc::props::{Align, Border, BorderStyle, Borders, HeightRule, Rgb, TextDirection, VAlign};
 use novaword_doc::{Block, Document, Paragraph, Path, Pos, StoryRef, Table, para_block};
+use serde_json::{Value, json};
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};
@@ -738,11 +738,8 @@ fn formula(s: &mut Session, v: &Value) -> CmdResult {
     let text = format_number(val, out_lang.as_deref());
     let props = s.typing_props();
     let at = s.sel.focus.clone();
-    let end = s.doc.insert_object(
-        &at,
-        novaword_doc::InlineObject::Field { instr: f.clone(), result: text.clone(), locked: false, code: false },
-        &props,
-    )?;
+    let end =
+        s.doc.insert_object(&at, novaword_doc::InlineObject::Field { instr: f.clone(), result: text.clone(), locked: false, code: false }, &props)?;
     s.sel = Selection::caret(end);
     Ok(json!({"result": text}))
 }

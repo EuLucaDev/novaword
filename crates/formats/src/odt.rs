@@ -14,9 +14,9 @@
 use std::collections::HashMap;
 use std::io::{Cursor, Read, Write};
 
+use novaword_doc::{Align, Document, Rgb};
 use quick_xml::XmlVersion;
 use quick_xml::events::{BytesStart, Event};
-use novaword_doc::{Align, Document, Rgb};
 
 use crate::model::{self, Cell, FBlock, FTable, Flow, Fmt, Inline, Kind, ListInfo, Meta, Para, make_img, mime_of};
 

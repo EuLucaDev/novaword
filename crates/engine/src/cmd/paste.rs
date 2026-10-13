@@ -10,9 +10,9 @@
 use std::collections::BTreeMap;
 use std::sync::Arc;
 
-use serde_json::{Value, json};
 use novaword_doc::edit::Fragment;
 use novaword_doc::{Block, Document, Paragraph};
+use serde_json::{Value, json};
 
 use super::{delete_selection, sel_result};
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};

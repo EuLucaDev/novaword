@@ -5,9 +5,9 @@
 //! engine itself.
 
 use egui::{Align2, Rect, Sense, Stroke, Ui, pos2, vec2};
-use serde_json::json;
 use novaword_doc::math::parse_linear;
 use novaword_engine::math_gallery::{BUILT_INS, STRUCTURES, SYMBOL_SETS, Template};
+use serde_json::json;
 
 use crate::WordApp;
 use crate::theme::{Tokens, regular, semibold};

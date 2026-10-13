@@ -1,9 +1,9 @@
 //! Right-to-left editing commands: paragraph direction, alignment as seen on the page, font
 //! commands on Persian text, arrow keys in bidirectional text, DOCX save and open.
 
-use serde_json::json;
 use novaword_doc::props::Align;
 use novaword_doc::{Pos, StoryRef};
+use serde_json::json;
 
 use crate::Session;
 

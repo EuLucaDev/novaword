@@ -78,9 +78,9 @@ pub mod window_geometry;
 pub mod wordart_menus;
 pub mod zotero;
 
+use novaword_engine::Session;
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
-use novaword_engine::Session;
 
 pub use control::ControlRequest;
 pub use file_dialogs::{FileDialogAnswer, FileDialogRequest, open_filters};

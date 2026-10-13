@@ -6,9 +6,9 @@
 //! put the new object inside it ([`add_member`]). Fit, Expand and Scale Drawing change its frame;
 //! Shape Fill and Shape Outline colour its background and border.
 
-use serde_json::{Value, json};
 use novaword_doc::para::{CanvasStyle, Float, GroupChild, InlineObject, MAX_GROUP_CHILDREN};
 use novaword_doc::{PartKind, Pos, StoryRef};
+use serde_json::{Value, json};
 
 use super::objects::object_selection;
 use super::{delete_selection, sel_result};

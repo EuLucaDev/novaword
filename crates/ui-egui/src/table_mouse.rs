@@ -7,9 +7,9 @@
 //! (`cmd::table_mouse`); this sends the presses as its commands, in page points.
 
 use egui::{Color32, Pos2, Rect, Shape, Stroke, Ui, vec2};
-use serde_json::json;
 use novaword_engine::cmd::table_mouse::{self, Spot, Target};
 use novaword_layout::DocLayout;
+use serde_json::json;
 
 use crate::WordApp;
 use crate::table_resize::{REACH_PX, page_scale, to_screen};

@@ -3,9 +3,9 @@
 //! `design.pageBorders`) as one undo step, so agents get the same result without the dialog.
 
 use egui::{Rect, Sense, Stroke, Ui, pos2, vec2};
+use novaword_doc::props::{Border, BorderStyle, Borders, Rgb, TabAlign, TabLeader, TabStop};
 use serde::Serialize;
 use serde_json::{Value, json};
-use novaword_doc::props::{Border, BorderStyle, Borders, Rgb, TabAlign, TabLeader, TabStop};
 
 use crate::WordApp;
 use crate::dialogs::{buttons, color_menu};

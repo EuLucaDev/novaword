@@ -1,9 +1,9 @@
 //! Typing and deleting.
 
-use serde_json::Value;
 use novaword_doc::para::{COLUMN_BREAK, NB_HYPHEN, NBSP, OBJ, PAGE_BREAK, SOFT_HYPHEN};
 use novaword_doc::props::{Border, BorderStyle, NumRef};
 use novaword_doc::{Block, ListKind, Path, Pos, StoryRef, Table};
+use serde_json::Value;
 
 use super::{delete_selection, non_mac, sel_result, split_para, type_text};
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};

@@ -1,7 +1,7 @@
 //! File tab (Backstage): new, open, save, export, print, properties; document inspection.
 
-use serde_json::{Value, json};
 use novaword_doc::{Block, Document, StoryRef};
+use serde_json::{Value, json};
 
 use super::{pos_json, sel_result};
 use crate::{CmdError, CmdResult, CommandSpec, Session, p};

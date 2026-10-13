@@ -2,8 +2,8 @@
 //! Alt Text pane (the selected object's or table's alternative text).
 
 use egui::Ui;
-use serde_json::{Value, json};
 use novaword_doc::Pos;
+use serde_json::{Value, json};
 
 use crate::WordApp;
 use crate::theme::{regular, semibold};

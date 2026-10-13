@@ -16,7 +16,7 @@ fn main() {
     res.set_icon("../../assets/app-icon/novaword.ico")
         .set("ProductName", "Nova Word")
         .set("FileDescription", "Nova Word word processor")
-        .set("CompanyName", "Learning Machines LLC")
+        .set("CompanyName", "Nova Foods")
         .set("LegalCopyright", "Copyright (c) the Nova Word authors. MIT OR Apache-2.0.")
         .set("OriginalFilename", "novaword.exe")
         .set("InternalName", "novaword");

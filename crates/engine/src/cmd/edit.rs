@@ -1,8 +1,8 @@
 //! Undo, clipboard, find & replace, Go To, Format Painter.
 
-use serde_json::{Value, json};
 use novaword_doc::edit::Fragment;
 use novaword_doc::{Pos, StoryRef};
+use serde_json::{Value, json};
 
 use super::{delete_selection, find_pattern, pos_json, sel_result};
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};

@@ -1,9 +1,9 @@
 //! Insert tab: pages, tables, pictures, shapes, links, bookmarks, headers/footers, text, symbols.
 
-use serde_json::{Value, json};
 use novaword_doc::para::{Float, InlineObject, ShapeKind, Wrap};
 use novaword_doc::props::{Align, CharProps, Rgb, TabAlign, TabStop, TextColor};
 use novaword_doc::{Block, Paragraph, PartKind, Path, Pos, StoryRef, Table, para_block};
+use serde_json::{Value, json};
 
 use super::{delete_selection, sel_result, split_para, type_text};
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};

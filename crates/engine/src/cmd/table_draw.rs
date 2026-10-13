@@ -4,12 +4,12 @@
 //! points, like the layout's; the app turns the pen and eraser on as canvas modes and sends each
 //! finished stroke or click here, so every stroke is one undo step.
 
-use serde_json::Value;
 use novaword_doc::props::{HeightRule, VMerge};
 use novaword_doc::table::{MAX_COLS, MAX_ROWS};
 use novaword_doc::{Block, Cell, Path, Pos, StoryRef, Table, para_block};
 use novaword_geom::Rect;
 use novaword_layout::{DocLayout, Placed};
+use serde_json::Value;
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};

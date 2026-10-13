@@ -1,9 +1,9 @@
 use std::net::TcpListener;
 
-use serde_json::{Value, json};
 use novaword_doc::para::OBJ;
 use novaword_doc::{Document, InlineObject, Path, Pos, StoryRef};
 use novaword_engine::{Selection, Session};
+use serde_json::{Value, json};
 
 use crate::client::{self, Options};
 use crate::fields;

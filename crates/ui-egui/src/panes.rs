@@ -3,8 +3,8 @@
 //! and the SmartArt Text Pane.
 
 use egui::{Stroke, Ui, vec2};
-use serde_json::{Value, json};
 use novaword_doc::{Pos, StoryRef};
+use serde_json::{Value, json};
 
 use crate::WordApp;
 use crate::theme::{Tokens, regular, semibold};

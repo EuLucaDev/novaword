@@ -10,10 +10,10 @@
 use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 
-use serde_json::{Value, json};
 use novaword_doc::Document;
 use novaword_doc::numbering::{AbstractNum, Num};
 use novaword_doc::styles::{Style, StyleKind};
+use serde_json::{Value, json};
 
 use super::para::touch_all;
 use crate::{CmdError, CmdResult, CommandSpec, Session, p};

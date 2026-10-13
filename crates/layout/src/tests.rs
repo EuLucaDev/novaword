@@ -881,12 +881,7 @@ fn display_has_glyphs_and_marks() {
 #[test]
 fn a_tracked_paragraph_mark_shows_in_its_authors_colour() {
     let mut d = Document::from_text("Split\nhere");
-    d.revisions.push(novaword_doc::Revision {
-        kind: novaword_doc::RevisionKind::Insert,
-        author: "Ana".into(),
-        date: String::new(),
-        move_name: None,
-    });
+    d.revisions.push(novaword_doc::Revision { kind: novaword_doc::RevisionKind::Insert, author: "Ana".into(), date: String::new(), move_name: None });
     d.para_mut(novaword_doc::StoryRef::Body, &novaword_doc::Path::top(0)).unwrap().mark.ins = Some(0);
     let l = lay(&d);
     let marks = |markup: bool| -> Vec<Option<novaword_doc::props::Rgb>> {
@@ -1599,8 +1594,7 @@ fn drop_cap_with_a_huge_font_lays_out() {
 
 #[test]
 fn drop_cap_indents_its_lines() {
-    let mut p =
-        novaword_doc::Paragraph::with_text(&"Every line of this paragraph wraps around a large first letter. ".repeat(6), Default::default());
+    let mut p = novaword_doc::Paragraph::with_text(&"Every line of this paragraph wraps around a large first letter. ".repeat(6), Default::default());
     p.props.drop_cap = Some(3);
     let mut d = Document::from_text("x");
     d.body = vec![novaword_doc::para_block(p)];

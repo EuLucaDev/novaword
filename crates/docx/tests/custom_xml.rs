@@ -1,7 +1,7 @@
 //! Original synthetic custom XML stores, written from the public OOXML package contract.
+use novaword_doc::{Path, StoryRef};
 use std::collections::BTreeMap;
 use std::io::{Cursor, Read, Write};
-use novaword_doc::{Path, StoryRef};
 
 const REL_NS: &str = "http://schemas.openxmlformats.org/package/2006/relationships";
 const RT: &str = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/";

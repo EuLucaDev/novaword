@@ -11,11 +11,11 @@
 //! glues it to the nearest connection site there (`shape.connect`), elsewhere leaves it free.
 
 use egui::{Color32, Painter, Pos2, Rect, Ui};
-use serde_json::json;
 use novaword_doc::para::{InlineObject, OBJ};
 use novaword_doc::{PartKind, Pos, StoryRef};
 use novaword_layout::DocLayout;
 use novaword_layout::hit::ObjectHit;
+use serde_json::json;
 
 use crate::WordApp;
 use crate::frame::{self, Drag, Grab};

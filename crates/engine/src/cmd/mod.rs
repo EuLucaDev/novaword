@@ -48,9 +48,9 @@ pub mod tools;
 pub mod view;
 pub mod wordart;
 
-use serde_json::{Value, json};
 use novaword_doc::props::CharProps;
 use novaword_doc::{Pos, Revision, RevisionKind, StoryRef};
+use serde_json::{Value, json};
 
 use crate::{CmdError, CmdResult, Registry, Session};
 

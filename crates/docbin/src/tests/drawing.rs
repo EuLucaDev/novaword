@@ -1,9 +1,9 @@
 //! Pictures and drawings: OfficeArt records ([MS-ODRAW]) hand-built for these tests from the
 //! specification, with tiny pictures generated in code. No file produced by Word is used.
 
-use proptest::prelude::*;
 use novaword_doc::para::{Anchor, InlineObject, ShapeKind, Wrap};
 use novaword_doc::props::Rgb;
+use proptest::prelude::*;
 
 use super::{StructSpec, grpprl, plc, read, struct_doc, structured_spec};
 use crate::officeart;

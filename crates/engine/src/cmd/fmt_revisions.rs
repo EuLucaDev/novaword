@@ -10,12 +10,12 @@
 
 use std::sync::Arc;
 
-use serde::Serialize;
-use serde_json::{Value, json};
 use novaword_doc::props::{CellProps, CharProps, ParaProps, PropChange, RowProps, TableProps};
 use novaword_doc::section::SectionProps;
 use novaword_doc::table::{Cell, Row, Table};
 use novaword_doc::{Block, Blocks, Document, Paragraph, Revision, RevisionKind};
+use serde::Serialize;
+use serde_json::{Value, json};
 
 use crate::Session;
 

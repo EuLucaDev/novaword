@@ -1,8 +1,8 @@
 //! Independent complex-script formatting through style inheritance and DOCX round trips.
 //! Synthetic packages, written here; no external documents or installed fonts are needed.
 
-use std::io::Write;
 use novaword_doc::{Document, Paragraph};
+use std::io::Write;
 
 fn package(run: &str, defaults: &str, styles: &str, paragraph_style: &str) -> Vec<u8> {
     let ns = r#"xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main""#;

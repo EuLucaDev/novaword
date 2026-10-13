@@ -6,10 +6,10 @@
 //! dialog. Shown through [`crate::dialogs::Dialog::Refs`].
 
 use egui::{Sense, Ui, vec2};
-use serde::Serialize;
-use serde_json::{Value, json};
 use novaword_doc::{Block, Source, StyleKind};
 use novaword_engine::cmd::references::FieldCode;
+use serde::Serialize;
+use serde_json::{Value, json};
 
 use crate::WordApp;
 use crate::dialogs::{Dialog, buttons};
@@ -410,9 +410,7 @@ pub struct IndexForm {
 /// The first field in the body whose name is `name`.
 fn body_field(app: &WordApp, name: &str) -> Option<FieldCode> {
     app.session.doc.body.iter().filter_map(|b| b.as_para()).flat_map(|p| p.objects.iter()).find_map(|o| match o {
-        novaword_doc::InlineObject::Field { instr, .. } => {
-            Some(FieldCode::parse(instr)).filter(|f| f.name == name && (name != "TOC" || !f.has('c')))
-        }
+        novaword_doc::InlineObject::Field { instr, .. } => Some(FieldCode::parse(instr)).filter(|f| f.name == name && (name != "TOC" || !f.has('c'))),
         _ => None,
     })
 }
@@ -1040,9 +1038,9 @@ fn sources_ui(app: &mut WordApp, ui: &mut Ui, selected: &mut Option<usize>) -> N
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_doc::{InlineObject, StoryRef};
     use novaword_engine::Session;
+    use serde_json::json;
 
     use super::*;
     use crate::Services;

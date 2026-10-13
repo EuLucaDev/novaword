@@ -2,9 +2,9 @@
 //! as the keyboard (one `text.insert` per character, Enter, Tab, Backspace), and the expected
 //! results are what Word produces for the same keys.
 
-use serde_json::json;
 use novaword_doc::props::{BorderStyle, VertAlign};
 use novaword_doc::{Pos, StoryRef};
+use serde_json::json;
 
 use crate::Session;
 

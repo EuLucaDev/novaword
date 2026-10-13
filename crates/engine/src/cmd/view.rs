@@ -1,7 +1,7 @@
 //! View tab and status bar: views, zoom, show/hide, panes.
 
-use serde_json::{Value, json};
 use novaword_layout::{NumeralMode, ViewMode};
+use serde_json::{Value, json};
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Session, p};

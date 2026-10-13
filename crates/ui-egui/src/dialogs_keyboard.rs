@@ -4,9 +4,9 @@
 //! agents get the same result without the dialog; the keys persist with the preferences.
 
 use egui::{Sense, Ui, vec2};
+use novaword_engine::keymap::normalize;
 use serde::Serialize;
 use serde_json::json;
-use novaword_engine::keymap::normalize;
 
 use crate::WordApp;
 use crate::theme::{Tokens, semibold};
@@ -264,8 +264,8 @@ fn capture(ui: &mut Ui, f: &mut KeyboardForm) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_engine::Session;
+    use serde_json::json;
 
     use crate::dialogs::Dialog;
     use crate::{Services, WordApp};

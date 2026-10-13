@@ -1252,9 +1252,8 @@ fn layout(app: &mut WordApp, ui: &mut Ui) {
 /// Arrange › Wrap Text: how the selected object sits in the text, and (Square, Tight, Through)
 /// which of its sides text flows on.
 fn wrap_menu(ui: &mut Ui, app: &mut WordApp) {
-    let (wrap, side) = novaword_engine::cmd::objects::selected(&app.session)
-        .and_then(|(_, o)| o.frame().map(|(_, _, f)| (f.wrap, f.wrap_text)))
-        .unwrap_or_default();
+    let (wrap, side) =
+        novaword_engine::cmd::objects::selected(&app.session).and_then(|(_, o)| o.frame().map(|(_, _, f)| (f.wrap, f.wrap_text))).unwrap_or_default();
     menu_button(ui, app, "wrapText", Some("Wrap\nText"), "Wrap Text", true, "arrange.wrapText", |ui, app| {
         use novaword_doc::para::{Wrap, WrapText};
         for (l, w, v) in [

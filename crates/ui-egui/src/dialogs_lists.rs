@@ -3,10 +3,10 @@
 //! (`list.define`, `review.trackingOptions`), so agents get the same result without the dialog.
 
 use egui::{Sense, Ui, vec2};
-use serde::Serialize;
-use serde_json::{Value, json};
 use novaword_doc::section::NumFormat;
 use novaword_engine::cmd::lists::{LEVELS, caret_list, level_json, levels_of};
+use serde::Serialize;
+use serde_json::{Value, json};
 
 use crate::WordApp;
 use crate::dialogs::buttons;
@@ -529,8 +529,8 @@ pub fn track_options(app: &mut WordApp, ui: &mut Ui, f: &mut TrackForm) -> bool 
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_engine::Session;
+    use serde_json::json;
 
     use crate::dialogs::Dialog;
     use crate::{Services, WordApp};

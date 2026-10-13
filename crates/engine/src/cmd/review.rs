@@ -1,8 +1,8 @@
 //! Review tab: comments, track changes, word count, spelling (via the proofing hook).
 
-use serde_json::{Value, json};
 use novaword_doc::para::InlineObject;
 use novaword_doc::{Comment, Paragraph, PartKind, Pos, StoryRef, para_block};
+use serde_json::{Value, json};
 
 use super::{fmt_revisions, now_iso, pos_json, sel_result};
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};
@@ -966,9 +966,9 @@ pub fn tracking_json(m: &novaword_layout::display::MarkupOptions) -> Value {
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_doc::Document;
     use novaword_layout::display::{DisplayOptions, Draw, page_display};
+    use serde_json::json;
 
     use crate::Session;
 

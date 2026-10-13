@@ -2,12 +2,12 @@
 //! structures, symbols, caret movement, delete, build-up), convert between built-up and linear
 //! form, inline/display, justification and equation numbers.
 
-use serde_json::{Value, json};
 use novaword_doc::math::{Arg, MNode, Math, MathJc, parse_linear, to_linear};
 use novaword_doc::math_edit::{self as me, MathPos, TypeStyle};
 use novaword_doc::math_latex::{parse_latex, to_latex};
 use novaword_doc::para::OBJ;
 use novaword_doc::{InlineObject, Pos};
+use serde_json::{Value, json};
 
 use super::{delete_selection, sel_result, split_para};
 use crate::{CmdError, CmdResult, CommandSpec, MathEdit, Selection, Session, p};

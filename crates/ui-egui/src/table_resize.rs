@@ -7,9 +7,9 @@
 //! are the engine's (`cmd::table_resize`).
 
 use egui::{Pos2, Rect, Stroke, Ui, pos2};
-use serde_json::json;
 use novaword_engine::cmd::table_resize::{self, Edge, Plan, ResizeTarget, Share};
 use novaword_layout::DocLayout;
+use serde_json::json;
 
 use crate::WordApp;
 use crate::theme::Tokens;

@@ -7,11 +7,11 @@
 //! "params"}`) that fixes it, run with the caret at `pos` (or the object selected). The rules and
 //! their wording are our own; the contrast rule uses the WCAG 2 contrast ratio.
 
-use serde_json::{Value, json};
 use novaword_doc::para::{InlineObject, OBJ};
 use novaword_doc::props::{Rgb, TextColor, VMerge};
 use novaword_doc::table::Table;
 use novaword_doc::{Block, Document, Paragraph, Path, Pos, StoryRef};
+use serde_json::{Value, json};
 
 /// Most issues reported (a hostile document can't make the report huge).
 const MAX_ISSUES: usize = 500;
@@ -256,9 +256,9 @@ pub fn contrast_ratio(a: Rgb, b: Rgb) -> f64 {
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_doc::Document;
     use novaword_doc::props::Rgb;
+    use serde_json::json;
 
     use crate::Session;
 

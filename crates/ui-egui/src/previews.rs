@@ -5,9 +5,9 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 use egui::{Rect, Response, Sense, Stroke, TextureHandle, Ui, pos2, vec2};
-use serde_json::{Value, json};
 use novaword_doc::props::CharProps;
 use novaword_doc::{Block, Document, Paragraph, Table, para_block};
+use serde_json::{Value, json};
 
 use crate::WordApp;
 use crate::theme::{Tokens, regular};

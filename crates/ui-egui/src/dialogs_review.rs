@@ -6,10 +6,10 @@
 //! [`crate::panes`].
 
 use egui::{Ui, vec2};
-use serde::Serialize;
-use serde_json::{Value, json};
 use novaword_engine::Password;
 use novaword_engine::cmd::tools::AutoCorrectPrefs;
+use serde::Serialize;
+use serde_json::{Value, json};
 
 use crate::WordApp;
 use crate::theme::semibold;
@@ -766,8 +766,8 @@ fn stop(app: &mut WordApp, st: &mut RestrictPane) {
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_engine::Session;
+    use serde_json::json;
 
     use super::*;
     use crate::{Services, WordApp};

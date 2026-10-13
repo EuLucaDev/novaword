@@ -6,11 +6,11 @@
 use std::collections::BTreeSet;
 use std::hash::{Hash, Hasher};
 
-use serde::{Deserialize, Serialize};
-use serde_json::{Value, json};
 use novaword_doc::{Block, Document, Pos, StoryRef};
 use novaword_layout::ViewMode;
 use novaword_layout::outline::{self as ol, BODY, OutlineView};
+use serde::{Deserialize, Serialize};
+use serde_json::{Value, json};
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};

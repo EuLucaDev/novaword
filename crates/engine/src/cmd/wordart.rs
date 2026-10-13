@@ -5,12 +5,12 @@
 //! text warp of a shape ([`novaword_doc::wordart::TextWarp`]). With a shape selected, or the
 //! caret in a text box, the effects apply to the whole box's text, as WordArt is formatted.
 
-use serde_json::{Value, json};
 use novaword_doc::effects::{Glow, Shadow};
 use novaword_doc::para::{Anchor, Float, FloatAlign, InlineObject, OBJ, ShapeKind, Wrap};
 use novaword_doc::props::{CharProps, Rgb};
 use novaword_doc::wordart::{GradStop, Reflection, TextEffects, TextFill, TextOutline, TextWarp, art_style};
 use novaword_doc::{Paragraph, PartKind, Pos, StoryRef, para_block};
+use serde_json::{Value, json};
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};

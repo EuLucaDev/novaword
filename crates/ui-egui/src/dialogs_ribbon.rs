@@ -374,8 +374,8 @@ fn qat_page(app: &mut WordApp, ui: &mut Ui, f: &mut RibbonForm, h: f32) {
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_engine::Session;
+    use serde_json::json;
 
     use crate::dialogs::Dialog;
     use crate::{Services, WordApp};

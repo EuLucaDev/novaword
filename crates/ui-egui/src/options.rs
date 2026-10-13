@@ -7,11 +7,11 @@
 use std::cell::Cell;
 
 use egui::{RichText, Ui, vec2};
+use novaword_engine::cmd::options::{MAX_WORD_CHARS, PANES};
+use novaword_geom::Unit;
 use serde::Serialize;
 use serde::de::DeserializeOwned;
 use serde_json::{Map, Value, json};
-use novaword_engine::cmd::options::{MAX_WORD_CHARS, PANES};
-use novaword_geom::Unit;
 
 use crate::WordApp;
 use crate::theme::{Tokens, semibold};
@@ -207,9 +207,7 @@ fn general(app: &mut WordApp, ui: &mut Ui) {
         let mut i = app.session.initials.clone();
         let hint = app.session.user_initials();
         if ui
-            .add(
-                egui::TextEdit::singleline(&mut i).desired_width(80.0).char_limit(novaword_engine::cmd::options::MAX_INITIALS_CHARS).hint_text(hint),
-            )
+            .add(egui::TextEdit::singleline(&mut i).desired_width(80.0).char_limit(novaword_engine::cmd::options::MAX_INITIALS_CHARS).hint_text(hint))
             .changed()
         {
             set(app, json!({"initials": i}));
@@ -609,8 +607,8 @@ fn numeral_picker(app: &mut WordApp, ui: &mut Ui) {
 #[cfg(test)]
 mod tests {
     use egui_kittest::kittest::Queryable;
-    use serde_json::json;
     use novaword_geom::Unit;
+    use serde_json::json;
 
     use super::{decimal, length, unit};
 

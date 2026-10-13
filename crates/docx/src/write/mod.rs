@@ -742,32 +742,29 @@ fn style_xml(w: &mut W, st: &Style) {
         }
         // One conditional formatting region (ECMA-376 §17.7.6): run properties, then cell borders
         // and shading.
-        let cond = |w: &mut W,
-                    ty: &str,
-                    chr: &novaword_doc::CharProps,
-                    fill: Option<novaword_doc::Rgb>,
-                    borders: Option<novaword_doc::props::Borders>| {
-            if !props::has_rpr(chr) && fill.is_none() && borders.is_none() {
-                return;
-            }
-            w.open("w:tblStylePr", &[("w:type", ty)]);
-            if props::has_rpr(chr) {
-                w.open("w:rPr", &[]);
-                props::rpr_inner(w, chr);
-                w.close("w:rPr");
-            }
-            if fill.is_some() || borders.is_some() {
-                w.open("w:tcPr", &[]);
-                if let Some(bs) = &borders {
-                    props::borders(w, "w:tcBorders", bs, Some("w:insideH"), &[]);
+        let cond =
+            |w: &mut W, ty: &str, chr: &novaword_doc::CharProps, fill: Option<novaword_doc::Rgb>, borders: Option<novaword_doc::props::Borders>| {
+                if !props::has_rpr(chr) && fill.is_none() && borders.is_none() {
+                    return;
                 }
-                if let Some(f) = fill {
-                    w.empty("w:shd", &[("w:val", "clear"), ("w:color", "auto"), ("w:fill", &f.hex())]);
+                w.open("w:tblStylePr", &[("w:type", ty)]);
+                if props::has_rpr(chr) {
+                    w.open("w:rPr", &[]);
+                    props::rpr_inner(w, chr);
+                    w.close("w:rPr");
                 }
-                w.close("w:tcPr");
-            }
-            w.close("w:tblStylePr");
-        };
+                if fill.is_some() || borders.is_some() {
+                    w.open("w:tcPr", &[]);
+                    if let Some(bs) = &borders {
+                        props::borders(w, "w:tcBorders", bs, Some("w:insideH"), &[]);
+                    }
+                    if let Some(f) = fill {
+                        w.empty("w:shd", &[("w:val", "clear"), ("w:color", "auto"), ("w:fill", &f.hex())]);
+                    }
+                    w.close("w:tcPr");
+                }
+                w.close("w:tblStylePr");
+            };
         cond(w, "wholeTable", &novaword_doc::CharProps::default(), t.fill, None);
         cond(w, "firstRow", &t.header_chr, t.header_fill, t.header_borders);
         // The total row's borders, its top edge falling back to the built-in top rule.

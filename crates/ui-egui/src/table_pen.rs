@@ -5,9 +5,9 @@
 //! again turns it off. The geometry decisions are the engine's (`cmd::table_draw`).
 
 use egui::{Pos2, Rect, Stroke, Ui, pos2, vec2};
-use serde_json::{Value, json};
 use novaword_engine::cmd::table_draw::{self, Stroke as Kind};
 use novaword_layout::DocLayout;
+use serde_json::{Value, json};
 
 use crate::WordApp;
 use crate::theme::Tokens;

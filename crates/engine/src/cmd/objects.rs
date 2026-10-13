@@ -3,11 +3,11 @@
 //! The selected object is the first picture/shape inside the selection (or right before the
 //! caret). Picture adjustments re-encode the bitmap (originals are kept for Reset Picture).
 
-use serde_json::{Value, json};
 use novaword_doc::para::{Float, InlineObject, Wrap, WrapText};
 use novaword_doc::props::{Rgb, TextVert, VAlign};
 use novaword_doc::{Pos, StoryRef, TextBody};
 use novaword_geom::Spin;
+use serde_json::{Value, json};
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};
@@ -33,9 +33,7 @@ fn has_floating(s: &Session) -> Option<&'static str> {
 fn movable_story(s: &Session, story: StoryRef) -> bool {
     match story {
         StoryRef::Body => true,
-        StoryRef::Part(id) => {
-            s.doc.parts.get(&id).is_some_and(|p| matches!(p.kind, novaword_doc::PartKind::Header | novaword_doc::PartKind::Footer))
-        }
+        StoryRef::Part(id) => s.doc.parts.get(&id).is_some_and(|p| matches!(p.kind, novaword_doc::PartKind::Header | novaword_doc::PartKind::Footer)),
     }
 }
 /// Charts and diagrams are not written back on save yet, so their size, position and wrapping stay

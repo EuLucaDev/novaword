@@ -1,11 +1,11 @@
 //! Paragraph formatting, lists and styles (Home › Paragraph, Home › Styles).
 
-use serde_json::{Value, json};
 use novaword_doc::collate::{SortKey, sort_key};
 use novaword_doc::numbering::ListKind;
 use novaword_doc::props::{Align, Border, BorderStyle, Borders, LineSpacing, NumRef, ParaProps, Rgb, TabAlign, TabLeader, TabStop};
 use novaword_doc::styles::{Style, StyleKind};
 use novaword_doc::{Block, CharProps, Pos};
+use serde_json::{Value, json};
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Session, p};

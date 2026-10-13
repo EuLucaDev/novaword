@@ -9,8 +9,8 @@
 
 use std::sync::mpsc::{Receiver, Sender};
 
-use serde_json::{Value, json};
 use novaword_zotero::{Bridge, Call, Command, Host};
+use serde_json::{Value, json};
 
 use crate::WordApp;
 
@@ -252,10 +252,10 @@ pub fn show_alert(app: &mut WordApp, ctx: &egui::Context) {
 mod tests {
     use std::net::TcpListener;
 
-    use serde_json::{Value, json};
     use novaword_doc::{Document, StoryRef};
     use novaword_engine::Session;
     use novaword_zotero::wire;
+    use serde_json::{Value, json};
 
     use crate::{Services, WordApp};
 

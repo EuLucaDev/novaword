@@ -11,12 +11,12 @@ pub fn set_system_locale(tag: &str) {
     let _ = SYSTEM_LOCALE.set(tag.to_string());
 }
 
-use serde::{Deserialize, Serialize};
-use serde_json::Value;
 use novaword_doc::edit::Fragment;
 use novaword_doc::props::CharProps;
 use novaword_doc::{Document, Path, Pos, StoryRef, Table};
 use novaword_layout::{DocLayout, LayoutCache, LayoutOptions, NumeralMode, ViewMode};
+use serde::{Deserialize, Serialize};
+use serde_json::Value;
 
 use crate::{CmdError, Registry};
 

@@ -8,10 +8,10 @@
 //! Extending the selection from one cell into another (Shift+arrows, Shift+click, a drag) makes
 //! such cells, as in Word (`table::extend_selection`).
 
-use serde_json::{Value, json};
 use novaword_doc::edit::Fragment;
 use novaword_doc::props::CharProps;
 use novaword_doc::{Block, Paragraph, Pos};
+use serde_json::{Value, json};
 
 use super::{parse_pos, pos_json};
 use crate::{CmdError, CmdResult, ColumnBlock, CommandSpec, Selection, Session, p};

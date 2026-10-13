@@ -7,9 +7,9 @@
 //! whose result is the ordinary content between the markers, e.g. a Zotero citation). Showing the
 //! code instead of the result applies to simple fields; range fields keep showing their result.
 
-use serde_json::{Value, json};
 use novaword_doc::para::{InlineObject, OBJ};
 use novaword_doc::{Pos, StoryRef};
+use serde_json::{Value, json};
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};
@@ -253,8 +253,8 @@ fn go(s: &mut Session, forward: bool) -> CmdResult {
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_doc::para::InlineObject;
+    use serde_json::json;
 
     use crate::Session;
 

@@ -1,10 +1,10 @@
 //! Character formatting (Home › Font).
 
-use serde_json::{Value, json};
 use novaword_doc::Pos;
 use novaword_doc::eq::{EncloseShape, EncloseStyle, Enclosure};
 use novaword_doc::props::{Border, CharProps, Highlight, Rgb, TextColor, Underline, VertAlign};
 use novaword_doc::resolve::ResolvedChar;
+use serde_json::{Value, json};
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Session, p};

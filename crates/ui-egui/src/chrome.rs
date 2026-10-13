@@ -1,8 +1,8 @@
 //! Title bar (Quick Access Toolbar, title, search, account) and status bar.
 
 use egui::{Align2, Rect, Sense, Stroke, Ui, pos2, vec2};
-use serde_json::json;
 use novaword_doc::StoryRef;
+use serde_json::json;
 
 use crate::theme::{Tokens, TypeRung, medium, paint_text, regular, semibold, text_width};
 use crate::{WordApp, icons};

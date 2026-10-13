@@ -6,9 +6,7 @@ use std::sync::Arc;
 
 use novaword_doc::numbering::{AbstractNum, Level, ListKind, Num, levels_for};
 use novaword_doc::para::{InlineObject, OBJ, PAGE_BREAK, Run};
-use novaword_doc::props::{
-    Border, BorderStyle, Borders, CellProps, CharProps, NumRef, ParaProps, RowProps, TextColor, Underline, VMerge, VertAlign,
-};
+use novaword_doc::props::{Border, BorderStyle, Borders, CellProps, CharProps, NumRef, ParaProps, RowProps, TextColor, Underline, VMerge, VertAlign};
 use novaword_doc::section::NumFormat;
 use novaword_doc::styles::{Style, StyleKind};
 use novaword_doc::{Align, Block, Blocks, Document, Paragraph, Rgb, Table, para_block};

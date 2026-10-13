@@ -13,14 +13,14 @@
 
 use std::sync::Arc;
 
-use serde::{Deserialize, Deserializer, Serialize};
-use serde_json::{Value, json};
 use novaword_doc::freeform::{FreePath, Freeform, InkTool, MAX_INK_PER_PAGE, MAX_POINTS};
 use novaword_doc::para::{Anchor, Float, InlineObject, OBJ, ShapeKind, Wrap};
 use novaword_doc::props::Rgb;
 use novaword_doc::{CharProps, Pos, StoryRef};
 use novaword_geom::Rect;
 use novaword_layout::{DocLayout, Placed};
+use serde::{Deserialize, Deserializer, Serialize};
+use serde_json::{Value, json};
 
 use super::ink_shape::{InkShape, recognise};
 use super::pos_json;
@@ -764,10 +764,10 @@ fn replay(s: &mut Session, v: &Value) -> CmdResult {
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_doc::StoryRef;
     use novaword_doc::freeform::InkTool;
     use novaword_doc::para::{InlineObject, ShapeKind, Wrap};
+    use serde_json::json;
 
     use crate::Session;
 

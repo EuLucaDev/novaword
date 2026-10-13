@@ -3,11 +3,11 @@
 //! format, style, start, restart rule, linked paragraph style, alignment, indents, what follows
 //! the number and the number's font.
 
-use serde_json::{Value, json};
 use novaword_doc::StoryRef;
 use novaword_doc::numbering::{AbstractNum, Level, LevelSuffix, ListKind, Num, levels_for};
 use novaword_doc::props::{Align, NumRef, Rgb, TextColor};
 use novaword_doc::section::NumFormat;
+use serde_json::{Value, json};
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Session, p};
@@ -257,9 +257,9 @@ fn touch_where(s: &mut Session, f: &dyn Fn(&novaword_doc::Paragraph) -> bool) ->
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_doc::Document;
     use novaword_layout::Placed;
+    use serde_json::json;
 
     use crate::Session;
 

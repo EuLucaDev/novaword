@@ -1,6 +1,6 @@
-use serde_json::json;
 use novaword_doc::props::BorderStyle;
 use novaword_doc::{Pos, StoryRef};
+use serde_json::json;
 
 use crate::{Session, cmd};
 
@@ -3100,8 +3100,8 @@ fn timestamps_come_from_the_clock() {
 
 #[test]
 fn charts_and_diagrams_can_be_selected_and_deleted_but_not_moved() {
-    use std::sync::Arc;
     use novaword_doc::para::InlineObject;
+    use std::sync::Arc;
     let mut s = s();
     run(&mut s, "text.insert", json!({"text": "Before "}));
     let chart = InlineObject::Graphic { w: 200.0, h: 100.0, alt: String::new(), float: Default::default(), graphic: Arc::new(Default::default()) };
@@ -3227,8 +3227,8 @@ fn hostile_chart_data_is_capped() {
 
 #[test]
 fn accessibility_reports_a_chart_without_alt_text() {
-    use std::sync::Arc;
     use novaword_doc::para::InlineObject;
+    use std::sync::Arc;
     let mut s = s();
     let chart = InlineObject::Graphic { w: 200.0, h: 100.0, alt: " ".into(), float: Default::default(), graphic: Arc::new(Default::default()) };
     s.doc.insert_object(&Pos::body(0, 0), chart, &Default::default()).unwrap();

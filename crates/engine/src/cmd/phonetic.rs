@@ -1,9 +1,9 @@
 //! Home › Font › Phonetic Guide: ruby text (furigana, pinyin…) over base text, kept as one
 //! [`InlineObject::Ruby`] in the paragraph.
 
-use serde_json::{Value, json};
 use novaword_doc::para::{OBJ, RubyAlign, ruby_offset, ruby_raise};
 use novaword_doc::{InlineObject, Pos};
+use serde_json::{Value, json};
 
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};
 
@@ -144,8 +144,8 @@ pub fn state(s: &Session) -> Value {
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use novaword_doc::{Document, InlineObject, Paragraph, StoryRef};
+    use serde_json::json;
 
     use crate::Session;
 

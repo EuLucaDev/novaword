@@ -1,7 +1,7 @@
 //! Caret movement and selection.
 
-use serde_json::Value;
 use novaword_doc::{Pos, StoryRef};
+use serde_json::Value;
 
 use super::{parse_pos, sel_result};
 use crate::{CmdError, CmdResult, CommandSpec, Selection, Session, p};

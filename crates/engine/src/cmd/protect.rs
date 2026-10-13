@@ -7,10 +7,10 @@
 //! restrictions forbid outright, and while exceptions exist [`outside_unchanged`] checks after the
 //! command that nothing outside them changed (the command is rolled back otherwise).
 
-use serde_json::{Value, json};
 use novaword_doc::para::{InlineObject, OBJ};
 use novaword_doc::props::CharProps;
 use novaword_doc::{Document, PermRange, Pos, StoryRef};
+use serde_json::{Value, json};
 
 use crate::{CmdError, CmdResult, CommandSpec, Session, p};
 

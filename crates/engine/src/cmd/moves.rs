@@ -179,8 +179,8 @@ pub fn has_moves(doc: &novaword_doc::Document) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use serde_json::{Value, json};
     use novaword_doc::{Document, Pos};
+    use serde_json::{Value, json};
 
     use crate::Session;
 

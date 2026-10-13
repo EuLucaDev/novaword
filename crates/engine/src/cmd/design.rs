@@ -1,8 +1,8 @@
 //! Design tab: themes, style sets, colours, fonts, paragraph spacing, watermark, page colour, borders.
 
-use serde_json::{Value, json};
 use novaword_doc::props::{Border, BorderStyle, Borders, LineSpacing, Rgb, TextColor};
 use novaword_doc::{Watermark, styles};
+use serde_json::{Value, json};
 
 use super::sel_result;
 use crate::{CmdError, CmdResult, CommandSpec, Session, p};

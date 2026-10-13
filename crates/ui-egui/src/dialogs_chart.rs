@@ -4,9 +4,9 @@
 //! without the dialog. Shown through [`crate::dialogs_insert::InsertDialog`].
 
 use egui::{Color32, Pos2, Rect, Sense, Shape, Stroke, Ui, pos2, vec2};
+use novaword_doc::chart::{ChartSpec, ChartType, MAX_POINTS, MAX_SERIES};
 use serde::Serialize;
 use serde_json::{Value, json};
-use novaword_doc::chart::{ChartSpec, ChartType, MAX_POINTS, MAX_SERIES};
 
 use crate::WordApp;
 use crate::theme::{Tokens, c32};

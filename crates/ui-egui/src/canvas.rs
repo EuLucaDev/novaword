@@ -6,9 +6,9 @@ use std::collections::HashMap;
 use std::hash::{Hash, Hasher};
 
 use egui::{Color32, Pos2, Rect, Sense, Stroke, TextureHandle, Ui, pos2, vec2};
-use serde_json::json;
 use novaword_doc::{PartKind, Pos, StoryRef};
 use novaword_layout::{DocLayout, Page, Placed};
+use serde_json::json;
 
 use crate::WordApp;
 use crate::theme::{Tokens, regular, semibold};

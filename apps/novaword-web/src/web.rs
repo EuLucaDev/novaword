@@ -4,9 +4,9 @@
 use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 
-use wasm_bindgen::JsCast as _;
 use novaword_engine::Session;
 use novaword_ui_egui::{Inbox, Services, WordApp};
+use wasm_bindgen::JsCast as _;
 
 const DOC_EXTS: &[&str] = &["docx", "docm", "dotx", "dotm", "doc", "dot", "odt", "rtf", "txt", "md", "html", "htm", "tex", "json", "xml"];
 const IMAGE_EXTS: &[&str] = &["png", "jpg", "jpeg", "gif", "webp", "bmp", "wmf", "emf"];

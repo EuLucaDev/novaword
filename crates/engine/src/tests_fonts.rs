@@ -1,7 +1,7 @@
 //! Fonts added at run time (#582): `font.add`, `font.list`, `font.remove`.
 
-use serde_json::json;
 use novaword_doc::Pos;
+use serde_json::json;
 
 use crate::Session;
 use crate::cmd::insert::base64_encode;
