@@ -101,6 +101,10 @@ fn toast(app: &mut WordApp, msg: impl Into<String>) {
 
 /// Começa a compartilhar o mesmo documento ativo.
 pub fn host(app: &mut WordApp) {
+    if !app.has_document() {
+        app.live.error = Some("Abra um documento para colaborar.".into());
+        return;
+    }
     if app.session.live_start().is_err() {
         app.live.error = Some("Abra um documento para colaborar.".into());
         return;
@@ -137,10 +141,11 @@ pub fn join(app: &mut WordApp, text: &str) {
         app.live.error = Some("Salve seu trabalho antes de abrir o convite.".into());
         return;
     }
-    if let Err(e) = app.session.run("file.new", &serde_json::json!({})) {
+    if let Err(e) = app.execute("file.new", serde_json::json!({})) {
         app.live.error = Some(e.to_string());
         return;
     }
+    app.ui.backstage = false;
     if app.session.live_start().is_err() {
         app.live.error = Some("Não foi possível preparar o documento compartilhado.".into());
         return;

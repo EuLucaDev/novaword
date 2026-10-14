@@ -88,3 +88,8 @@ languages, screen-reader access, ecosystem decisions (VBA, add-ins, cloud), an i
 | 2026-10-10 | major | Created: milestones moved from ROADMAP.md with remaining hours; Current focus from gaps.md; M15–M16 added |
 | 2026-10-10 | trivial | M11: ink pens and eraser landed (#307) |
 | 2026-10-11 | trivial | M11: lasso, Add Pen, Ink to Shape and Ink Replay landed (#395) |
+
+
+## Integração Nova Foods em 14/10/2026
+
+Integra edição, equações, layout e tela inicial no Nova Word. Personalizações Nova Foods preservadas por fusão em três vias. Testes e compilação não executados por solicitação do usuário; versão e implantação mantidas. Nenhuma nova avaliação de prontidão foi realizada nesta integração.
