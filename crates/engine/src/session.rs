@@ -270,7 +270,7 @@ pub struct FindState {
 }
 
 #[derive(Clone)]
-struct Undo {
+pub(crate) struct Undo {
     label: String,
     doc: Document,
     sel: Selection,
@@ -365,6 +365,8 @@ pub struct Session {
     /// The next mutating command joins the previous undo step (later frames of a drag).
     join_next: bool,
     rev: u64,
+    /// Colaboração em tempo real (Nova Live), ver `crate::live`.
+    pub live: crate::live::LiveState,
     /// Which document this is: changes when [`Session::set_document`] replaces it (open, new,
     /// mail merge, recover), never on an edit.
     document_id: u64,
@@ -589,6 +591,7 @@ impl Session {
             typing_open: false,
             join_next: false,
             rev: 1,
+            live: crate::live::LiveState::default(),
             document_id: 1,
             cache: LayoutCache::new(),
             layout: None,
@@ -680,6 +683,11 @@ impl Session {
     pub fn document_id(&self) -> u64 {
         self.document_id
     }
+    /// Revisão do documento (sobe a cada alteração).
+    pub fn revision(&self) -> u64 {
+        self.rev
+    }
+
     pub fn touch(&mut self) {
         self.rev = self.rev.wrapping_add(1);
         self.dirty = true;
@@ -955,6 +963,8 @@ impl Session {
 
     /// Replace the document (open/new).
     pub fn set_document(&mut self, doc: Document) {
+        self.live.on = false;
+        self.live.outbox.clear();
         self.document_id = self.document_id.wrapping_add(1);
         self.bib_style = doc_bib_style(&doc);
         self.doc = doc;
@@ -1020,6 +1030,7 @@ impl Session {
             typing_open,
             join_next,
             rev: _,
+            live: _,
             cache: _,
             layout: _,
             originals: _,
@@ -1116,7 +1127,32 @@ impl Session {
     /// Run a command by id with JSON params (the single entry point for the UI, CLI, MCP and
     /// control channel). Mutating commands are undoable; a failed command leaves the document as
     /// it was; a panic inside a command becomes an error.
+    /// Roda um comando. Com colaboração ativa, o comando de fora que alterou o documento vai
+    /// para a sessão (ver `crate::live`).
     pub fn run(&mut self, id: &str, params: &Value) -> Result<Value, CmdError> {
+        self.live.depth += 1;
+        let ctx = (self.live.depth == 1 && self.live.on).then(|| crate::live::context(&self.sel));
+        let mutates = self.registry.get(id).is_some_and(|s| s.mutates);
+        let r = self.run_inner(id, params);
+        self.live.depth -= 1;
+        if let Some(ctx) = ctx
+            && r.is_ok()
+        {
+            self.live_record(id, params, mutates, ctx);
+        }
+        r
+    }
+
+    /// As pilhas de desfazer/refazer como estão (para pôr de volta depois do comando de um colega).
+    pub(crate) fn undo_stacks(&self) -> (Vec<Arc<Undo>>, u64, Vec<Arc<Undo>>, bool) {
+        (self.history.clone(), self.undo_evicted, self.redo.clone(), self.typing_open)
+    }
+
+    pub(crate) fn restore_undo_stacks(&mut self, s: (Vec<Arc<Undo>>, u64, Vec<Arc<Undo>>, bool)) {
+        (self.history, self.undo_evicted, self.redo, self.typing_open) = s;
+    }
+
+    fn run_inner(&mut self, id: &str, params: &Value) -> Result<Value, CmdError> {
         let join = std::mem::take(&mut self.join_next);
         let reg = self.registry.clone();
         let Some(spec) = reg.get(id) else { return Err(CmdError::Unknown(id.to_string())) };

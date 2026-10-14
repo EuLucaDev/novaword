@@ -56,6 +56,8 @@ pub mod icons;
 pub mod ink;
 pub mod keys;
 pub mod keytips;
+#[cfg(not(target_arch = "wasm32"))]
+pub mod live_ui;
 pub mod mini_toolbar;
 pub mod objects;
 pub mod options;
@@ -342,6 +344,8 @@ fn migrate_units(v: &mut Value) {
 
 /// The application.
 pub struct WordApp {
+    #[cfg(not(target_arch = "wasm32"))]
+    pub live: live_ui::LiveUi,
     pub session: Session,
     pub ui: UiState,
     pub services: Services,
@@ -463,6 +467,8 @@ impl WordApp {
             novaword_engine::set_system_locale(&tag);
         }
         WordApp {
+            #[cfg(not(target_arch = "wasm32"))]
+            live: live_ui::LiveUi::default(),
             session,
             ui: UiState::default(),
             services,
@@ -1498,6 +1504,12 @@ impl WordApp {
     pub fn ui(&mut self, ui: &mut egui::Ui) {
         let t0 = now_ms();
         let ctx = ui.ctx().clone();
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            live_ui::pump(self, &ctx);
+            live_ui::bar(self, ui);
+            live_ui::window(self, &ctx);
+        }
         i18n::set_current(i18n::Lang::from_pref(&self.ui.language));
         // Animation effects off: egui's scroll areas get a wheel notch whole, not eased in.
         if !self.animations_on() {

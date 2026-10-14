@@ -239,7 +239,7 @@ fn main() -> eframe::Result {
     let mut control_port: Option<u16> = std::env::var("NOVAWORD_CONTROL_PORT").ok().and_then(|p| p.parse().ok());
     let mut files = Vec::new();
     let mut sample = false;
-    let mut args = std::env::args().skip(1);
+    let mut args = std::env::args().skip(1).filter(|arg| !novaword_ui_egui::live_ui::is_invite_arg(arg));
     while let Some(a) = args.next() {
         match a.as_str() {
             "--control" => control_port = args.next().and_then(|p| p.parse().ok()),
@@ -318,6 +318,7 @@ fn main() -> eframe::Result {
             let mut session = Session::new(doc);
             session.system_region = region;
             let mut app = WordApp::new(session, services(file_dialog, &cc.egui_ctx));
+            app.live.pending_join = novaword_ui_egui::live_ui::launch_invite();
             load_prefs(&mut app);
             load_user_dictionary(&mut app);
             // A region chosen in File › Options replaces the system's for the first blank
