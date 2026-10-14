@@ -87,8 +87,16 @@ impl Session {
         self.doc = doc;
         self.touch();
         self.clamp_selection();
+        self.forget_undo();
         self.live.seen = self.revision();
         Ok(())
+    }
+
+    /// O desfazer guarda fotos do documento: depois de uma alteração de colega, desfazer o passo
+    /// anterior apagaria o trabalho dele. O histórico local recomeça daqui.
+    fn forget_undo(&mut self) {
+        let (history, evicted, _, _) = self.undo_stacks();
+        self.restore_undo_stacks((Vec::new(), evicted + history.len() as u64, Vec::new(), false));
     }
 
     /// Roda o comando de um colega com o cursor dele; desfazer e cursor locais ficam como estavam.
@@ -97,7 +105,6 @@ impl Session {
             return Err(err("comando não permitido na colaboração"));
         }
         let local = self.sel.clone();
-        let undo = self.undo_stacks();
         if let Some(sel) = ctx.get("selection").and_then(|s| serde_json::from_value::<Selection>(s.clone()).ok()) {
             self.sel = sel;
             self.clamp_selection();
@@ -105,7 +112,7 @@ impl Session {
         self.live.applying = true;
         let r = self.run(cmd, params);
         self.live.applying = false;
-        self.restore_undo_stacks(undo);
+        self.forget_undo();
         self.sel = local;
         self.clamp_selection();
         self.live.seen = self.revision();

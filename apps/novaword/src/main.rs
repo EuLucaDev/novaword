@@ -233,6 +233,8 @@ fn build_sha() -> &'static str {
 }
 
 fn main() -> eframe::Result {
+    #[cfg(not(target_arch = "wasm32"))]
+    novaword_ui_egui::live_ui::install_link_handler();
     // First, so the panic hook and every start-up warning are recorded (`logging`).
     let logger = logging::install();
     logging::install_panic_hook();
