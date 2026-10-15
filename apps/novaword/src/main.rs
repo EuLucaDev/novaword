@@ -74,6 +74,10 @@ impl eframe::App for App {
         self.0.raw_input_hook(raw);
     }
     fn ui(&mut self, ui: &mut egui::Ui, frame: &mut eframe::Frame) {
+        #[cfg(not(target_arch = "wasm32"))]
+        if !novaword_ui_egui::account_ui::gate(ui, "novaword") {
+            return;
+        }
         self.0.ui(ui);
         self.3.show(frame);
     }

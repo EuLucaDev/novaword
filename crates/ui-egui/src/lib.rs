@@ -8,6 +8,9 @@
 /// What the operating system says about light and dark. macOS and Windows answer through winit;
 /// winit reports nothing on Linux, where the desktop portal does ([`desktop_theme`]). `None` means
 /// nobody answered, not a preference.
+#[cfg(not(target_arch = "wasm32"))]
+pub use nova_account_ui as account_ui;
+
 fn system_theme(ctx: &egui::Context, desktop_dark: Option<bool>) -> Option<egui::Theme> {
     ctx.system_theme().or_else(|| desktop_dark.map(|dark| if dark { egui::Theme::Dark } else { egui::Theme::Light }))
 }
