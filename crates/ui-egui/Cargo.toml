@@ -9,6 +9,8 @@ description = "NovaWord egui front end (Word-style ribbon UI); swappable: nothin
 workspace = true
 
 [dependencies]
+# Os 14 temas de interface da suíte Nova Foods (os do Nova Photo), em todos os alvos.
+nova-themes = { git = "https://github.com/EuLucaDev/nova-live", rev = "73285eb52d4ebe4e70b8fd2e8ea79a9328638e10" }
 nova-ui = { path = "../../vendor/novafoods-libs-d27646a5f7/crates/ui" }
 novaword-geom = { workspace = true }
 novaword-doc = { workspace = true }

@@ -18,11 +18,18 @@ pub enum Appearance {
     Light,
     Dark,
     System,
+    /// One of the Nova Foods suite themes (Nova Photo's fourteen, from `nova-themes`).
+    Suite(nova_themes::ThemeKind),
 }
 
 impl Appearance {
     /// In menu order.
     pub const ALL: [Appearance; 3] = [Appearance::System, Appearance::Light, Appearance::Dark];
+
+    /// Every choice the menus offer: the three above, then the suite themes.
+    pub fn menu() -> impl Iterator<Item = Appearance> {
+        Appearance::ALL.into_iter().chain(nova_themes::ThemeKind::ALL.into_iter().map(Appearance::Suite))
+    }
 
     /// The value used in `ui.json` and by the `ui.theme` command.
     pub fn code(self) -> &'static str {
@@ -30,11 +37,15 @@ impl Appearance {
             Appearance::Light => "light",
             Appearance::Dark => "dark",
             Appearance::System => "system",
+            Appearance::Suite(kind) => kind.id(),
         }
     }
 
     pub fn from_code(code: &str) -> Option<Appearance> {
-        Appearance::ALL.into_iter().find(|a| a.code().eq_ignore_ascii_case(code.trim()))
+        Appearance::ALL
+            .into_iter()
+            .find(|a| a.code().eq_ignore_ascii_case(code.trim()))
+            .or_else(|| nova_themes::ThemeKind::from_name(code.trim()).map(Appearance::Suite))
     }
 
     /// The English label (translated with `tl!` where shown).
@@ -43,6 +54,7 @@ impl Appearance {
             Appearance::Light => "Light",
             Appearance::Dark => "Dark",
             Appearance::System => "Use system setting",
+            Appearance::Suite(kind) => kind.label(),
         }
     }
 
@@ -53,6 +65,7 @@ impl Appearance {
             Appearance::Light => false,
             Appearance::Dark => true,
             Appearance::System => system == Some(egui::Theme::Dark),
+            Appearance::Suite(kind) => kind.is_dark(),
         }
     }
 
@@ -62,6 +75,8 @@ impl Appearance {
             Appearance::Light => egui::ThemePreference::Light,
             Appearance::Dark => egui::ThemePreference::Dark,
             Appearance::System => egui::ThemePreference::System,
+            Appearance::Suite(kind) if kind.is_dark() => egui::ThemePreference::Dark,
+            Appearance::Suite(_) => egui::ThemePreference::Light,
         }
     }
 }
@@ -353,8 +368,62 @@ impl Tokens {
         }
     }
     pub fn get(ctx: &egui::Context) -> Tokens {
+        if let Some(kind) = suite_theme(ctx) {
+            return Tokens::for_suite(kind);
+        }
         if ctx.global_style().visuals.dark_mode { Tokens::dark() } else { Tokens::light() }
     }
+
+    /// A suite theme paints the interface (title bar, ribbon, panels, fields, text, accent); the
+    /// page, its selection, handles and the semantic colours stay Nova Word's own.
+    pub fn for_suite(kind: nova_themes::ThemeKind) -> Tokens {
+        let p = kind.palette();
+        let dark = kind.is_dark();
+        let base = if dark { Tokens::dark() } else { Tokens::light() };
+        let ink = if dark { nova_themes::mix(p.accent, [255, 255, 255, 255], 0.25) } else { nova_themes::mix(p.accent, [0, 0, 0, 255], 0.2) };
+        Tokens {
+            dark,
+            title_bar: rgba(p.chrome),
+            ribbon: rgba(p.card),
+            tab_strip: rgba(p.chrome),
+            canvas: rgba(p.canvas),
+            panel: rgba(p.card),
+            border: rgba(p.separator),
+            border_strong: rgba(p.field_border),
+            text: rgba(p.text),
+            text_dim: rgba(p.text_dim),
+            text_disabled: rgba(p.text_faint),
+            icon: rgba(p.icon),
+            hover: rgba(p.hover),
+            pressed: rgba(p.pressed),
+            checked: rgba(nova_themes::alpha(p.accent, if dark { 70 } else { 45 })),
+            accent: rgba(p.accent),
+            accent_text: rgba(ink),
+            on_accent: rgba(p.primary_text),
+            input: rgba(p.field),
+            input_border: rgba(p.field_border),
+            group_label: rgba(p.text_faint),
+            ruler: rgba(p.card),
+            ruler_margin: rgba(p.pressed),
+            ruler_tick: rgba(p.text_dim),
+            status_bar: rgba(p.chrome),
+            menu: rgba(p.card),
+            ..base
+        }
+    }
+}
+
+fn rgba(c: nova_themes::Rgba) -> Color32 {
+    Color32::from_rgba_unmultiplied(c[0], c[1], c[2], c[3])
+}
+
+fn suite_theme_id() -> egui::Id {
+    egui::Id::new("nova-suite-theme")
+}
+
+/// The suite theme [`apply`] installed, if any.
+pub fn suite_theme(ctx: &egui::Context) -> Option<nova_themes::ThemeKind> {
+    ctx.data(|d| d.get_temp::<Option<nova_themes::ThemeKind>>(suite_theme_id())).flatten()
 }
 
 /// Install the UI fonts (Inter, JetBrains Mono) and the novafoods-fonts CJK interface faces if built
@@ -599,8 +668,20 @@ fn tracked_job(text: &str, font: &FontId, tracking: f32, color: Color32) -> egui
 /// Setting a concrete theme for `System` would pin the native window too, and macOS then stops
 /// reporting appearance changes (#311).
 pub fn apply(ctx: &egui::Context, appearance: Appearance) {
-    ctx.set_visuals_of(egui::Theme::Light, visuals(&Tokens::light()));
-    ctx.set_visuals_of(egui::Theme::Dark, visuals(&Tokens::dark()));
+    let suite = match appearance {
+        Appearance::Suite(kind) => Some(kind),
+        _ => None,
+    };
+    ctx.data_mut(|d| d.insert_temp(suite_theme_id(), suite));
+    if let Some(kind) = suite {
+        // Both slots get the theme, so the OS appearance can't swap it out.
+        let v = visuals(&Tokens::for_suite(kind));
+        ctx.set_visuals_of(egui::Theme::Light, v.clone());
+        ctx.set_visuals_of(egui::Theme::Dark, v);
+    } else {
+        ctx.set_visuals_of(egui::Theme::Light, visuals(&Tokens::light()));
+        ctx.set_visuals_of(egui::Theme::Dark, visuals(&Tokens::dark()));
+    }
     ctx.all_styles_mut(|s| {
         s.spacing.item_spacing = egui::vec2(6.0, 4.0);
         s.spacing.button_padding = egui::vec2(8.0, 3.0);

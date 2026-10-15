@@ -1085,7 +1085,11 @@ impl WordApp {
                 if let Some(v) = s("value") {
                     match theme::Appearance::from_code(v) {
                         Some(a) => self.ui.theme = a,
-                        None => return Some(Err(format!("unknown theme {v:?}; use light, dark or system"))),
+                        None => {
+                            return Some(Err(format!(
+                                "unknown theme {v:?}; use light, dark, system or a suite theme id (studio, proMedium, classic…)"
+                            )));
+                        }
                     }
                 }
                 json!({"theme": self.ui.theme.code(), "dark": self.ui_is_dark()})
