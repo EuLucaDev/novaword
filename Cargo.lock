@@ -2604,7 +2604,7 @@ dependencies = [
 
 [[package]]
 name = "novaword"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "arboard",
  "clipboard-win",
@@ -2636,7 +2636,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-cli"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "novaword-doc",
  "novaword-engine",
@@ -2649,11 +2649,11 @@ dependencies = [
 
 [[package]]
 name = "novaword-control-key"
-version = "0.11.0"
+version = "0.12.0"
 
 [[package]]
 name = "novaword-doc"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "novaword-geom",
  "proptest",
@@ -2665,7 +2665,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-docbin"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "cfb",
  "image",
@@ -2681,7 +2681,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-docx"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "aes",
  "base64 0.22.1",
@@ -2703,7 +2703,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-engine"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "cfb",
  "encoding_rs",
@@ -2732,7 +2732,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-fonts"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "harfrust 0.13.3",
  "kurbo",
@@ -2745,7 +2745,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-formats"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "cfb",
  "chardetng",
@@ -2762,14 +2762,14 @@ dependencies = [
 
 [[package]]
 name = "novaword-geom"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "serde",
 ]
 
 [[package]]
 name = "novaword-layout"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "image",
  "js-sys",
@@ -2788,7 +2788,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-mcp"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "log",
  "novaword-control-key",
@@ -2800,7 +2800,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-metafile"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "kurbo",
  "thiserror 2.0.21",
@@ -2808,7 +2808,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-pdf"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "craft-pdf",
  "hayro-cmap",
@@ -2828,7 +2828,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-proof"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "log",
  "miniz_oxide 0.8.9",
@@ -2837,7 +2837,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-render"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "image",
  "log",
@@ -2851,7 +2851,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-ui-egui"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "egui",
  "egui_kittest",
@@ -2880,7 +2880,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-web"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "eframe",
  "egui",
@@ -2899,7 +2899,7 @@ dependencies = [
 
 [[package]]
 name = "novaword-zotero"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "log",
  "novaword-doc",
@@ -5862,7 +5862,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
 
 [[package]]
 name = "xtask"
-version = "0.11.0"
+version = "0.12.0"
 dependencies = [
  "serde_json",
 ]
