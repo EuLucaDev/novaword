@@ -117,7 +117,7 @@ Every screenshot below is Nova Word itself, rendered offscreen by its own UI tes
 | **References** | Table of contents, footnotes and endnotes, citations and bibliography (APA, MLA, Chicago, IEEE), captions, table of figures, cross-references, index, table of authorities |
 | **Review** | Spelling and grammar with suggestions (English and Polish, by each run's language), thesaurus, word count, comments in margin balloons or a pane, track changes, accept/reject, compare documents, restrict editing, accessibility checker, document inspector |
 | **Mailings** | Mail merge from CSV, merge fields, address block, greeting line, rules, preview, finish to a document; envelopes and labels |
-| **View** | Print layout, web layout, draft, read mode, focus, zoom, one/multiple pages, page width, Navigation pane, rulers, gridlines, dark mode; interface in English, 简体中文, 繁體中文, 日本語, Português (Brasil), Español, Українська, Српски / Srpski, Eesti, Türkçe, Русский, Italiano, Deutsch, Polski, Čeština, Magyar, Français or Български (follows the system language by default) |
+| **View** | Print layout, web layout, draft, read mode, focus, zoom, one/multiple pages, page width, Navigation pane, rulers, gridlines, dark mode; interface in English, 简体中文, 繁體中文, 日本語, Português (Brasil), Español, Українська, Српски / Srpski, Eesti, Türkçe, Русский, Italiano, Deutsch, Polski, Čeština, Magyar, Français, Български, Tiếng Việt, 한국어 or Svenska (follows the system language by default) |
 | **Files** | .docx read/write (opens in Word), Word 97-2003 .doc import, PDF export, .odt, .rtf, .html, .md, .tex, .txt import/export, page images |
 
 The honest picture, area by area, is in [ROADMAP.md](ROADMAP.md), the
@@ -188,7 +188,7 @@ covers every target starting with it (`novaword*=debug`). The logger is
 | L0 | `novaword-geom` | units and measurements |
 | L1 | `novaword-doc`, `novaword-fonts`, `novaword-proof` | document model and editing; fonts and shaping; spelling, grammar, hyphenation |
 | L2 | `novaword-layout`, `novaword-docx`, `novaword-formats` | line breaking, pagination, tables, notes, hit testing; OOXML; ODT/RTF/HTML/Markdown/TXT |
-| L3 | `novaword-render`, `novaword-pdf` | rasteriser (vello_cpu); PDF (krilla) |
+| L3 | `novaword-render`, `novaword-pdf` | rasteriser (vello_cpu); PDF ([craft-pdf](docs/shared-pdf.md), Krilla) |
 | L4 | `novaword-engine` | session, undo, 422 commands, Word feature catalog |
 | L5 | `novaword-mcp` | MCP server |
 | L6 | `novaword-ui-egui` | the Word-style front end (swappable) |
@@ -289,6 +289,21 @@ to the AUR itself. Install one of them:
 | [`novaword`](https://aur.archlinux.org/packages/novaword) | The latest release, built from source with `cargo` | You prefer to build releases yourself |
 | [`novaword-git`](https://aur.archlinux.org/packages/novaword-git) | The current `main` branch, built from source | You want unreleased changes and accept an occasional broken build |
 For example `yay -S novaword-bin` or `paru -S novaword-bin`.
+
+#### Community packages
+
+These packages are maintained by community members, not by the Nova Word team.
+
+On Gentoo, the [::snakebyte overlay](https://github.com/switch87/snakebyte-overlay) packages the
+Linux release as `app-office/novaword-bin` (prebuilt) and `app-office/novaword` (built from source):
+
+```sh
+eselect repository add snakebyte git https://github.com/switch87/snakebyte-overlay.git
+emaint sync -r snakebyte
+echo 'app-office/novaword-bin ~amd64' >> /etc/portage/package.accept_keywords/novaword
+emerge --ask app-office/novaword-bin
+```
+
 ### FreeBSD
 
 | Build | File |

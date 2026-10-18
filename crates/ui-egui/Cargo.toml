@@ -14,6 +14,7 @@ nova-themes = { git = "https://github.com/EuLucaDev/nova-live", rev = "d0c50673e
 nova-ui = { path = "../../vendor/novafoods-libs-d27646a5f7/crates/ui" }
 novaword-geom = { workspace = true }
 novaword-doc = { workspace = true }
+unicode-bidi = { workspace = true }
 novaword-fonts = { workspace = true }
 novaword-layout = { workspace = true }
 novaword-render = { workspace = true }

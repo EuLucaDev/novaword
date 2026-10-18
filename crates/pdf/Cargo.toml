@@ -3,7 +3,7 @@ name = "novaword-pdf"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "NovaWord PDF export (krilla): embedded font subsets with selectable text, links, outline, tagging"
+description = "NovaWord PDF export (craft-pdf / Krilla): embedded font subsets with selectable text, links, outline, tagging"
 
 [lints]
 workspace = true
@@ -14,7 +14,7 @@ novaword-geom = { workspace = true }
 novaword-fonts = { workspace = true }
 novaword-layout = { workspace = true }
 novaword-metafile = { workspace = true }
-krilla = { workspace = true }
+craft-pdf = { workspace = true }
 kurbo = { workspace = true }
 image = { workspace = true }
 thiserror = { workspace = true }

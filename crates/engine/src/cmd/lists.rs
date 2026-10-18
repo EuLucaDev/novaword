@@ -4,7 +4,7 @@
 //! the number and the number's font.
 
 use novaword_doc::StoryRef;
-use novaword_doc::numbering::{AbstractNum, Level, LevelSuffix, ListKind, Num, levels_for};
+use novaword_doc::numbering::{Level, LevelSuffix, ListKind, levels_for};
 use novaword_doc::props::{Align, NumRef, Rgb, TextColor};
 use novaword_doc::section::NumFormat;
 use serde_json::{Value, json};
@@ -193,13 +193,7 @@ fn define(s: &mut Session, v: &Value) -> CmdResult {
             touch_lists(s, &sharing)?;
             n
         }
-        None => {
-            let aid = s.doc.numbering.abstracts.iter().map(|a| a.id.saturating_add(1)).max().unwrap_or(0);
-            s.doc.numbering.abstracts.push(AbstractNum { id: aid, name, levels: levels.clone() });
-            let nid = s.doc.numbering.nums.iter().map(|n| n.id.saturating_add(1)).max().unwrap_or(1).max(1);
-            s.doc.numbering.nums.push(Num { id: nid, abstract_id: aid, ..Default::default() });
-            nid
-        }
+        None => s.doc.numbering.try_add_levels(name, levels.clone())?,
     };
     // Levels linked to a paragraph style number every paragraph in that style.
     let mut linked = Vec::new();

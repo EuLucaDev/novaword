@@ -6,7 +6,11 @@ use std::path::{Path, PathBuf};
 /// The app's settings folder (preferences, logs, key files): macOS
 /// `~/Library/Application Support/Nova Word`, Windows `%APPDATA%\Nova Word`, otherwise
 /// `$XDG_CONFIG_HOME/novaword` or `~/.config/novaword`.
+/// `NOVAWORD_PROFILE_DIR` overrides the entire folder for isolated runs.
 pub fn settings_dir() -> Option<PathBuf> {
+    if let Some(path) = std::env::var_os("NOVAWORD_PROFILE_DIR").filter(|p| !p.is_empty()) {
+        return Some(PathBuf::from(path));
+    }
     if cfg!(target_os = "macos") {
         std::env::var_os("HOME").map(|h| PathBuf::from(h).join("Library/Application Support/Nova Word"))
     } else if cfg!(windows) {

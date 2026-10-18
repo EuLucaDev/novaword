@@ -20,3 +20,4 @@ novaword-render = { workspace = true }
 novaword-mcp = { workspace = true }
 novaword-zotero = { workspace = true }
 serde_json = { workspace = true }
+sys-locale = "0.3"
